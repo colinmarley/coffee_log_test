@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import AuthPage from './auth_page';
+import AuthPage from './AuthPage';
 import firebase from 'firebase';
 
-import { setAuthStatus } from '../../actions/index';
+import { setAuthStatus, initProfile } from '../../actions/index';
 
 import { connect } from 'react-redux';
 
@@ -15,6 +15,9 @@ const mapStateToProps = (state , ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         setAuthStatus: (authStatus) => { dispatch(setAuthStatus(authStatus)); },
+        initProfile: (email, username, firstName, lastName, profileType, photo) => {
+            dispatch(initProfile(email, username, firstName, lastName, profileType, photo));
+        },
     }
 }
 
@@ -41,7 +44,17 @@ class Auth extends Component {
             if (result.credential) {
                 //successfully signed in and returned credentials
                 this.props.setAuthStatus(true);
+                console.log(result);
             }
+
+            const email = result.user.email;
+            const username = result.user.email;
+            const firstName = result.user.displayName.split(' ')[0];
+            const lastName = result.user.displayName.split(' ')[1];
+            const loginType = "Google";
+            const photo = result.user.photoURL;
+
+            this.props.initProfile(email, username, firstName, lastName, loginType, photo);
         })
         .catch((err) => {
             console.log(err);
