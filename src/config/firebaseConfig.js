@@ -19,5 +19,10 @@ export let firebaseConfig = {
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
         console.log("Firebase init Complete");
+    },
+
+    getDB: () => {
+        var db = firebase.firestore();
+        return db;
     }
 }

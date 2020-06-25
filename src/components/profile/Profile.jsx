@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 
-import { initProfile } from '../../../actions/index';
+import { initProfile } from '../../actions/index';
 
 import { connect } from 'react-redux';
 import ProfilePage from './ProfilePage';

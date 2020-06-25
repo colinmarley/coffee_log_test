@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { firebaseConfig } from './config/firebaseConfig';
+import firebase from 'firebase';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
@@ -13,6 +14,7 @@ import { createStore } from 'redux';
 firebaseConfig.initConfig();
 
 let store = createStore(rootReducer);
+
 
 ReactDOM.render(
   <Provider store={store} >
