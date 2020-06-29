@@ -12,6 +12,19 @@ const mapDispatchToProps = dispatch => ({
 
 });
 
+const STYLES = {
+    auth: {
+        position: "relative",
+        display: "block",
+        height: "7vh",
+        width: "30vw",
+        backgroundColor: "orange",
+        border: "0.25vh solid black",
+        borderRadius: "4vh",
+        color: "white"
+    }
+}
+
 class AuthTab extends Component {
     constructor(props) {
         super(props);
@@ -21,9 +34,9 @@ class AuthTab extends Component {
 
     render() {
         return(
-            <div>
+            <li style={STYLES.auth}>
                 <p>AUTH TAB</p>
-            </div>
+            </li>
         );
     }
 }

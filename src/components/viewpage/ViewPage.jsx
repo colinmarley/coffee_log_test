@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import Menu from './menu/Menu';
-import NavbarView from './NavbarView'
-
-// import NavbarView from './NavbarView'
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -17,31 +14,35 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const STYLES = {
-    navbar: {
-        position: "relative",
-        width: "100vw",
-        height: "10vh",
-        backgroundColor: "teal"
+    viewPage: {
+        
+
     }
 }
 
-class Navbar extends Component {
+
+class ViewPage extends Component {
     constructor(props) {
         super(props);
 
-        
+        this.setPage = this.setPage.bind(this);
+    }
+
+    setPage(newComponent) {
+        ReactDOM.render(newComponent, document.getElementById('view-page'));
     }
 
     render() {
         return (
-            <div id="navbar-root" style={STYLES.navbar}>
-                <NavbarView title={"Coffee Log"} />
+            <div id="view-page" style={STYLES.viewPage}> 
+
             </div>
         )
     }
+
 }
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Navbar);
+)(ViewPage);

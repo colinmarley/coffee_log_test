@@ -9,6 +9,7 @@ import firebase from 'firebase';
 import rootReducer from './reducers';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { BrowserRouter } from 'react-router-dom';
 
 //initialize firebase config on app start
 firebaseConfig.initConfig();
@@ -17,9 +18,11 @@ let store = createStore(rootReducer);
 
 
 ReactDOM.render(
-  <Provider store={store} >
-    <App />
-  </Provider>,
+  <BrowserRouter>
+    <Provider store={store} >
+      <App />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
